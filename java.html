@@ -1,0 +1,94 @@
+
+<header>
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="assets/img_logo.jpg"
+                 alt="Logo Ibran" class="logo-img">
+            <span class="logo-text">KACAMATA IBRAN</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="product.html">Product</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+    </div>
+</header>
+
+const nomorWhatsApp = "6281234567890";
+
+const searchInput = document.getElementById("searchInput");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const products = document.querySelectorAll(".product-card");
+const noResults = document.getElementById("noResults");
+
+let activeCategory = "semua";
+
+function filterProducts() {
+    if (!searchInput || !noResults) return;
+
+    const keyword = searchInput.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    products.forEach(product => {
+        const name = product.dataset.name.toLowerCase();
+        const title = product.querySelector(".card-title")
+            .textContent.toLowerCase();
+
+        const category = product.dataset.category;
+
+        const matchesSearch =
+            name.includes(keyword) || title.includes(keyword);
+
+        const matchesCategory =
+            activeCategory === "semua" ||
+            category === activeCategory;
+
+        const visible = matchesSearch && matchesCategory;
+
+        product.style.display = visible ? "flex" : "none";
+
+        if (visible) visibleCount++;
+    });
+
+    noResults.style.display =
+        visibleCount === 0 ? "block" : "none";
+}
+
+if (searchInput) {
+    searchInput.addEventListener("input", filterProducts);
+}
+
+filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        filterButtons.forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+        activeCategory = button.dataset.category;
+
+        filterProducts();
+    });
+});
+
+document.querySelectorAll(".btn-buy[data-product]").forEach(button => {
+    button.addEventListener("click", event => {
+        event.preventDefault();
+
+        const product = button.dataset.product;
+        const price = Number(button.dataset.price)
+            .toLocaleString("id-ID");
+
+        const message =
+            `Halo Toko Kacamata Ibran, saya tertarik membeli ${product} dengan harga Rp ${price}. Apakah produknya masih tersedia?`;
+
+        window.open(
+            "https://wa.me/" + nomorWhatsApp +
+            "?text=" + encodeURIComponent(message),
+            "_blank"
+        );
+    });
+});
+

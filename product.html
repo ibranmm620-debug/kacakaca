@@ -1,0 +1,79 @@
+
+<header>
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="assets/img_logo.jpg"
+                 alt="Logo Ibran" class="logo-img">
+            <span class="logo-text">KACAMATA IBRAN</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="product.html">Product</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+    </div>
+</header>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product - Kacamata Ibran</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="assets/img_logo.jpg" class="logo-img" alt="Logo Ibran">
+            <span class="logo-text">KACAMATA IBRAN</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="product.html" class="active">Product</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+    </div>
+</header>
+
+<main class="container">
+
+    <h2 class="section-title">Katalog Kacamata</h2>
+
+    <div class="category-filter">
+        <button class="filter-btn active" data-category="semua">Semua Produk</button>
+        <button class="filter-btn" data-category="hitam">Kacamata Hitam</button>
+        <button class="filter-btn" data-category="fashion">Fashion</button>
+        <button class="filter-btn" data-category="minus">Kacamata Minus</button>
+        <button class="filter-btn" data-category="premium">Premium</button>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput"
+        placeholder="Cari produk kacamata...">
+    </div>
+
+    <div class="product-grid" id="productGrid">
+
+        <!-- kacamata ibran -->
+
+        <div class="no-results" id="noResults">
+            Produk tidak ditemukan.
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2026 Toko Kacamata Ibran.</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
